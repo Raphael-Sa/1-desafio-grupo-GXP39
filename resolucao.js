@@ -136,7 +136,7 @@ function exercicio09() {
 }
     exercicio09()
 
-// Resolução do décimo exercício
+// Resolução da décima questão
 
 function exercicio10() {
     let valorProduto = 0; 
@@ -148,3 +148,187 @@ function exercicio10() {
     return valorProduto
 }    
     exercicio10()
+
+// Resolução da décima primeira questão: 
+
+function Exercicio11(Products, value) {
+    var departArray = [];
+    for (var i = 0; i < Products.length; i++) {
+      departArray.push(Products[i].departamento.nomeDepto);
+    }
+  
+    var departaments = [...new Set(departArray)],
+      qntd = 0,
+      finalArray = [];
+  
+    for (var i = 0; i < departaments.length; i++) {
+      for (var x = 0; x < Products.length; x++) {
+        if (
+          Products[x].disponivel === value &&
+          Products[x].departamento.nomeDepto === departaments[i]
+        ) {
+          qntd += 1;
+        }
+      }
+  
+      finalArray.push({ Departamento: departaments[i], Quantidade: qntd });
+      qntd = 0;
+    }
+  
+    return finalArray;
+  }
+  
+  var exercicio11 = Exercicio11(listaProdutos, "sim");
+  
+  console.log(`11º) ARRAY COM DEPARTAMENTO / QUANTIDADE ▼:`);
+  console.log(exercicio11);
+  
+  // Resolução da décima segunda questão:
+
+  function Exercicio12(Products) {
+    var departArray = [];
+    for (var i = 0; i < Products.length; i++) {
+      departArray.push(Products[i].departamento.nomeDepto);
+    }
+  
+    var departaments = [...new Set(departArray)],
+      qntd = 0,
+      finalArray = [];
+  
+    for (var i = 0; i < departaments.length; i++) {
+      for (var x = 0; x < Products.length; x++) {
+        if (Products[x].departamento.nomeDepto === departaments[i]) {
+          qntd += Products[x].preco * Products[x].qtdEstoque;
+        }
+      }
+  
+      finalArray.push({ Departamento: departaments[i], Inventario: qntd });
+      qntd = 0;
+    }
+  
+    return finalArray;
+  }
+  
+  var exercicio12 = Exercicio12(listaProdutos);
+  
+  console.log(`12º) ARRAY COM DEPARTAMENTO / INVENTÁRIO ▼:`);
+  console.log(exercicio12);
+  
+  // Resolução da décima terceira questão:
+
+  function Exercicio13(Products) {
+    var departArray = [];
+    for (var i = 0; i < Products.length; i++) {
+      departArray.push(Products[i].departamento.nomeDepto);
+    }
+  
+    var departaments = [...new Set(departArray)],
+      preco = 0,
+      qntd = 0,
+      media = 0,
+      finalArray = [];
+  
+    for (var i = 0; i < departaments.length; i++) {
+      for (var x = 0; x < Products.length; x++) {
+        if (departaments[i] == Products[x].departamento.nomeDepto) {
+          preco += Products[x].preco;
+          qntd += Products[x].qtdEstoque;
+        }
+      }
+  
+      media = preco / qntd;
+      finalArray.push({ Departamento: departaments[i], TicketMedio: media });
+      preco = 0;
+      qntd = 0;
+    }
+  
+    return finalArray;
+  }
+  
+  var exercicio13 = Exercicio13(listaProdutos);
+  
+  console.log(`13º) ARRAY COM DEPARTAMENTO / TICKET MÉDIO ▼:`);
+  console.log(exercicio13);
+  
+  // Resolução da décima quarta questão:
+
+  function Exercicio14(Products) {
+    var departArray = [];
+    for (var i = 0; i < Products.length; i++) {
+      departArray.push(Products[i].departamento.nomeDepto);
+    }
+  
+    var departaments = [...new Set(departArray)],
+      preco,
+      depart,
+      valParc = 0,
+      finalArray = [];
+  
+    for (var i = 0; i < departaments.length; i++) {
+      preco = 0;
+  
+      for (var x = 0; x < Products.length; x++) {
+        if (departaments[i] == Products[x].departamento.nomeDepto) {
+          preco += Products[x].preco;
+        }
+      }
+  
+      valParc == 0 ? (valParc = preco) : "";
+  
+      if (preco > valParc) {
+        valParc = preco;
+        depart = departaments[i];
+      }
+    }
+  
+    finalArray.push({ Departamento: depart, Somatorio: valParc });
+  
+    return finalArray;
+  }
+  
+  var exercicio14 = Exercicio14(listaProdutos);
+  
+  console.log(`14º) ARRAY COM DEPARTAMENTO / SOMATÓRIO MAIS VALIOSO ▼:`);
+  console.log(exercicio14);
+  
+  
+  // Resolução da décima quinta questão:
+
+  function Exercicio15(Products) {
+    var departArray = [];
+    for (var i = 0; i < Products.length; i++) {
+      departArray.push(Products[i].departamento.nomeDepto);
+    }
+  
+    var departaments = [...new Set(departArray)],
+      preco,
+      depart,
+      valParc = 0,
+      finalArray = [];
+  
+    for (var i = 0; i < departaments.length; i++) {
+      preco = 0;
+  
+      for (var x = 0; x < Products.length; x++) {
+        if (departaments[i] == Products[x].departamento.nomeDepto) {
+          preco += Products[x].preco;
+        }
+      }
+  
+      valParc == 0 ? (valParc = preco) : "";
+  
+      if (preco < valParc) {
+        valParc = preco;
+        depart = departaments[i];
+      }
+    }
+  
+    finalArray.push({ Departamento: depart, Somatorio: valParc });
+  
+    return finalArray;
+  }
+  
+  var exercicio15 = Exercicio15(listaProdutos);
+  
+  console.log(`15º) ARRAY COM DEPARTAMENTO / SOMATÓRIO MENOS VALIOSO ▼:`);
+  console.log(exercicio15);
